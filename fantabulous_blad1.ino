@@ -3,37 +3,35 @@ int inches;
 
 
 long readDistance(int Pin) {
-	int a;
-	pinMode(7,OUTPUT);
-	digitalWrite(7,LOW);
-	delayMicroseconds(2);
-	digitalWrite(7,HIGH);
-	delayMicroseconds(10);
-	digitalWrite(7,LOW);
-	pinMode(7,INPUT);
-	a = pulseIn(7,HIGH);
-	return a;
+  int distanciaSensor;
+  pinMode(7,OUTPUT);
+  digitalWrite(7,LOW);
+  delayMicroseconds(2);
+  digitalWrite(7,HIGH);
+  delayMicroseconds(10);
+  digitalWrite(7,LOW);
+  pinMode(7,INPUT);
+  distanciaSensor = pulseIn(7,HIGH);
+  return distanciaSensor;
 }
-
 
 
 void setup()
 {
-  	pinMode(7,INPUT);
-	pinMode (8,OUTPUT);
-	pinMode (9,OUTPUT);
-	pinMode (10,OUTPUT);
-	Serial.begin(9600);
+  pinMode(7,INPUT);
+  pinMode (8,OUTPUT);
+  pinMode (9,OUTPUT);
+  pinMode (10,OUTPUT);
+  Serial.begin(9600);
 }
-
 
 
 void loop()
 {
-  int aux;
+  int medida;
 
-  aux = readDistance(7);
-  cm = aux*0.01723;
+  medida = readDistance(7);
+  cm = medida*0.01723;
   Serial.println(cm);
   delay(100);
   
